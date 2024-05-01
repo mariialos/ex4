@@ -13,16 +13,18 @@ public class Exercise4 {
 
     public void loadLocationGraph(String fileName){
     	try {
+    		Map<String, Location> mapCityNameToLocation = new HashMap<>();
 			FileReader file = new FileReader(fileName);
 			BufferedReader in = new BufferedReader(file);
 			//reads first line and splits it into 3 items
 			String line = in.readLine();
 			String[] items = line.split(";");
 			for(int i = 0; i < items.length; i+=3) {
-				String city = items[i];
+				String cityName = items[i];
 				Double x = Double.parseDouble(items[i+1]);
 				Double y = Double.parseDouble(items[i+2]);
-				Location location = new Location(city, x, y);
+				Location location = new Location(cityName, x, y);
+				mapCityNameToLocation.put(cityName, location);
 				graph.add(location);
 			}
 			
@@ -33,7 +35,7 @@ public class Exercise4 {
 				String to = elements[1];
 				String edgeName = elements[2];
 				int edgeWeight = Integer.parseInt(elements[3]);
-
+				graph.connect(mapCityNameToLocation.get(from), mapCityNameToLocation.get(to), edgeName, edgeWeight);
 			}
 			
 			in.close();
