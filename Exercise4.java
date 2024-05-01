@@ -17,7 +17,12 @@ public class Exercise4 {
 			BufferedReader in = new BufferedReader(file);
 			String line = in.readLine();
 			String[] items = line.split(";");
-			
+			for(int i = 0; i < items.length; i+=3) {
+				String city = items[i];
+				Double x = Double.parseDouble(items[i+1]);
+				Double y = Double.parseDouble(items[i+2]);
+				
+			}
 			
 			
 			in.close();
