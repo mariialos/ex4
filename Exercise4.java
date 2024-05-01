@@ -21,7 +21,8 @@ public class Exercise4 {
 				String city = items[i];
 				Double x = Double.parseDouble(items[i+1]);
 				Double y = Double.parseDouble(items[i+2]);
-				
+				Location location = new Location(city, x, y);
+				graph.add(location);
 			}
 			
 			
