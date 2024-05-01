@@ -16,7 +16,7 @@ public class Exercise4 {
     		Map<String, Location> mapCityNameToLocation = new HashMap<>();
 			FileReader file = new FileReader(fileName);
 			BufferedReader in = new BufferedReader(file);
-			//reads first line and splits it into 3 items
+			//reads first line, splits it into separate items, then process items with step of 3 (3 items per loop) to get data for fields in Location
 			String line = in.readLine();
 			String[] items = line.split(";");
 			for(int i = 0; i < items.length; i+=3) {
@@ -61,6 +61,7 @@ public class Exercise4 {
     }
 
     public void loadRecommendationGraph(String fileName) {
+ 
     }
 
 }
