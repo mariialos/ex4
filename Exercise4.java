@@ -15,6 +15,7 @@ public class Exercise4 {
     	try {
 			FileReader file = new FileReader(fileName);
 			BufferedReader in = new BufferedReader(file);
+			//reads first line and splits it into 3 items
 			String line = in.readLine();
 			String[] items = line.split(";");
 			for(int i = 0; i < items.length; i+=3) {
@@ -25,6 +26,15 @@ public class Exercise4 {
 				graph.add(location);
 			}
 			
+			//reads line by line and splits every line into 4 items
+			while((line = in.readLine()) != null) {
+				String[] elements  = line.split(";");
+				String from = elements[0];
+				String to = elements[1];
+				String edgeName = elements[2];
+				int edgeWeight = Integer.parseInt(elements[3]);
+
+			}
 			
 			in.close();
 			file.close();	
