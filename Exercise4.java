@@ -61,6 +61,31 @@ public class Exercise4 {
     }
 
     public void loadRecommendationGraph(String fileName) {
+      	try {
+			FileReader file = new FileReader(fileName);
+			BufferedReader in = new BufferedReader(file);
+			String line;
+			
+			//reads line by line and splits it into 3 items (Person's name, name of record, name of artist)
+			while((line = in.readLine()) != null) {
+				String[] elements  = line.split(";");
+				String personName = elements[0];
+				String recordName = elements[1];
+				String artistName = elements[2];
+				Person person = new Person(personName);
+				Record record = new Record(recordName, artistName);
+				graph.add(person);
+				graph.add(record);
+                graph.connect(person, record, "", 0);
+			}
+			
+			in.close();
+			file.close();	
+    	}catch (FileNotFoundException e) {
+			System.err.println("Filen " + fileName + " kan inte öppnas!");
+		}catch (IOException e) {
+			System.err.println("IO-fel har inträffat!");
+		}
  
     }
 
